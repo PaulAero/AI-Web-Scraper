@@ -14,7 +14,7 @@ streamlit run main.py
 
 **Exemple de rendu**
 
-<img title="" src="file:///home/pi-project-admin/snap/marktext/9/.config/marktext/images/2024-10-06-17-19-44-image.png" alt="" width="720">
+<img title="" src="file:///home/pi-project-admin/Images/Capture d’écran du 2024-10-06 22-23-24.png" alt="" width="720">
 
 ## Fonctionnement des programmes
 
@@ -31,8 +31,6 @@ Voici comment il fonctionne :
 4. **Segmentation du contenu :** La fonction `split_dom_content(dom_content)` divise le contenu nettoyé en morceaux de taille limitée pour éviter d'avoir des blocs de texte trop longs.
 
 Le programme est utile pour obtenir et nettoyer le contenu textuel de pages web tout en évitant d’inclure des éléments non pertinents (comme les scripts ou styles).
-
-
 
     Le programme **parse.py** extrait des informations spécifiques d'un contenu textuel à l'aide d'un modèle de langage basé sur **Ollama**. Voici comment il fonctionne :
 
