@@ -11,19 +11,30 @@ template = (
     "5. **answers in the user's language:** reply in the user's language unless explicitly asked to reply in another language"
 )
 
-model = OllamaLLM(model="llama3.1")
+model = OllamaLLM(model="mistral-nemo")
 
 
-def parse_with_ollama(dom_chunks, parse_description):
+def parse_with_ollama(dom_chunks, parse_description, store_interaction=False):
     prompt = ChatPromptTemplate.from_template(template)
     chain = prompt | model
 
     parsed_results = []
 
+    with open("store_LLM_interaction.txt", 'w') as file:
+        pass # on vide le contenu du fichier
+
     for i, chunk in enumerate(dom_chunks, start=1):
         response = chain.invoke(
             {"dom_content": chunk, "parse_description": parse_description}
         )
+
+        if store_interaction:
+            with open("store_LLM_interaction.txt", "a") as file:
+                file.write(f"\nInteraction {i} of {len(dom_chunks)}\n"
+                           f"INPUT: chunk, {chunk}\n"
+                           f"parse_description, {parse_description}\n"
+                           f"OUTPUT: {response}")
+
         print(f"Parsed batch: {i} of {len(dom_chunks)}")
         parsed_results.append(response)
 
